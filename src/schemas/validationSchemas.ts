@@ -1,5 +1,19 @@
 import { z } from 'zod';
 
+export const NotificationResponseSchema = z.object({
+  status: z.string(),
+  message: z.string(),
+});
+
+export const TemperaturesResponseSchema = z.object({
+  temperature: z.number(),
+  location: z.string(),
+});
+
+export const NotificationsRequestBodySchema = z.object({
+  to: z.string().email("Invalid email format"),
+});
+
 export const WeatherSchema = z.object({
   location: z.object({
     name: z.string(),
