@@ -15,7 +15,11 @@ const mg = mailgun.client({
 });
 
 export const sendEmail = async ({from, to, subject, text}: SendEmailProp): Promise<MessagesSendResult> => {
-  return await mg.messages.create(process.env.MAILGUN_DOMAIN! , {
+  if (!process.env.MAILGUN_DOMAIN) {
+    throw new Error('Missing Mailgun domain');
+  }
+  
+  return await mg.messages.create(process.env.MAILGUN_DOMAIN , {
     from,
     to,
     subject,
