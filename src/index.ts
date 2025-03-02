@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Server } from 'http';
 import server from './server';
-import { DEFAULT_PORT } from './defaults';
+import { PORT } from './defaults';
 
 export function startServer(server: Server, PORT: number) {
   try {
@@ -13,5 +13,4 @@ export function startServer(server: Server, PORT: number) {
   }
 }
 
-const PORT = parseInt(process.env.PORT || DEFAULT_PORT, 10);
 startServer(server, PORT);
